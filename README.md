@@ -12,5 +12,5 @@ Site desenvolvido para visualização de arquivos em pastas do servidor
 Dentro da pasta **Arquivos** do projeto você pode criar outras pastas para separar seus arquivos.
 
 
-Boa uso :sparkles: :camel: :boom:
+Bom uso :sparkles: :camel: :boom:
 
