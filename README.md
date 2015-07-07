@@ -11,6 +11,8 @@ Site desenvolvido para visualização de arquivos em pastas do servidor
 
 Dentro da pasta **Arquivos** do projeto você pode criar outras pastas para separar seus arquivos.
 
+* http://prntscr.com/7pxb3w
+* http://prntscr.com/7pxbkw
 
 Bom uso :sparkles: :camel: :boom:
 
