@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<?php
+// Turn off all error reporting
+error_reporting(0);
+ 
+$action = 0;
+// Conexão com o banco de dados
+$conn = @mysql_connect("localhost", "root", "") or die ("Problemas na conexão.");
+$db = @mysql_select_db("images", $conn) or die ("Problemas na conexão");
+
+// Se o usuário clicou no botão cadastrar efetua as ações
+  
+if ($_POST['cadastrar']) {
+  $action = 0;
+  // Recupera os dados dos campos
+  $nome =  strtolower($_POST['nome']);
+  $foto = $_FILES["foto"];
+  $error = array();
+  // Se a foto estiver sido selecionada
+  if (!empty($foto["name"])) {
+    
+    
+
+      // Verifica se o arquivo é uma imagem
+      if(!eregi("^image\/(pjpeg|jpeg|png|gif|bmp|TIFF|tif|tiff|TIF)$", $foto["type"])){
+         $error[1] = "Isso não é uma imagem.";
+      } 
+  
+    // Pega as dimensões da imagem
+    $dimensoes = getimagesize($foto["tmp_name"]);
+  
+     
+    // Se não houver nenhum erro
+    if (count($error) == 0) {
+    
+      // Pega extensão da imagem
+      preg_match("/\.(gif|bmp|png|jpg|jpeg|tiff|tif){1}$/i", $foto["name"], $ext);
+
+        
+foreach($_POST['e9'] as $selectedOption){
+    $TEXTMID = $TEXTMID."_" . $selectedOption ."";
+
+}        
+    $nomefoto = explode(".", $foto["name"]);
+          // Gera um nome único para a imagem
+          $nome_imagem = $nome."_".$TEXTMID. "." . $ext[1];
+
+          // Caminho de onde ficará a imagem
+          $caminho_imagem = "fotos/".$nome_imagem ;
+
+      // Faz o upload da imagem para seu respectivo caminho
+      move_uploaded_file($foto["tmp_name"], $caminho_imagem);
+    
+       
+
+
+      // Insere os dados no banco
+      $sql = mysql_query("INSERT INTO imagem VALUES ('', '".$nome."', '".$nome_imagem."')");
+      $sql = mysql_query("SELECT id FROM imagem ORDER BY id DESC LIMIT 0,1");
+      $imagem = mysql_fetch_object($sql);
+      
+
+
+
+
+foreach($_POST['e9'] as $selectedOption){
+  
+$sql = mysql_query("SELECT id FROM categorias WHERE titulo = '".$selectedOption."' ");
+      $catid = mysql_fetch_object($sql);
+ $sql3 = mysql_query("INSERT INTO imgxcategoria VALUES ('', ".$imagem->id.", ".$catid->id.")");
+      
+}
+      // Se os dados forem inseridos com sucesso
+      if ($sql){
+        echo "<div class=' alert alert-success' style='position:fixed; margin-left: 200px;opacity: 0.7;'>
+              <button type='button' class='close' >X</button>
+              <strong>Well done!</strong> Imagem cadastrada com sucesso.
+            </div>";
+      }
+    }
+  
+    // Se houver mensagens de erro, exibe-as 
+  }
+
+}
+?>
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Arquivos de Imagens</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <script>
+$(document).ready(function() {
+
+   
+  $("#e9").select2();
+ $("#e8").select2();
+
+
+    }); 
+</script>
+  </head>
+
+  <body>
+
+    <!-- Side Menu -->
+    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-reorder"></i></a>
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-reorder"></i></a>
+        <li class="sidebar-brand"><a href="http://startbootstrap.com">Arquivo de imagens</a></li>
+        <li><a href="#top">Início</a></li>
+         
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </div>
+    <!-- /Side Menu -->
+  
+    <!-- Full Page Image Header Area -->
+    <div id="top" class="header">
+      <div class="vert-text">
+        <h1>Arquivo de Imagens</h1>
+        <h3>Escolha Suas Categorias E Clique Em <em>Upload</em> Para Salvar Sua Imagem</h3>
+       
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data" name="cadastro" >
+Nome:<br />
+<input type="text" name="nome" /><br /><br />
+categoria:<br />
+ 
+<select multiple name='e9[]' id="e9" style="width:300px" class="populate select2-offscreen" tabindex="-1">
+  
+<?php
+    $sql = mysql_query("SELECT * FROM  categorias ");
+           
+while ($categoria = mysql_fetch_object($sql)) {
+
+  echo "<option value=".$categoria->titulo."   >".$categoria->titulo."</option>";
+}
+?>
+           
+        </select>
+<!--<input type="text" name="categoria" /><br /><br />-->
+<br />Foto de exibição- :<br />
+<input type="file"  name="foto" /><br /><br />
+<button type="submit" id="cadastrar"  name="cadastrar" value="Upload"  class="btn btn-default btn-lg"> <i class="fa fa-cloud-upload"></i>Upload</button>
+</form>
+
+
+      </div>
+    </div>
+    <!-- /Full Page Image Header Area -->
+  
+    <!-- Intro -->
+     
+   
+
+  <!-- Bootstrap core JavaScript -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.js"></script>
+
+  <!-- Custom JavaScript for the Side Menu - Put in a custom JS file if you want to clean this up -->
+  <script>
+      $("#menu-close").click(function(e) {
+          e.preventDefault();
+          $("#sidebar-wrapper").toggleClass("active");
+      });
+  </script>
+  <script>
+      $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#sidebar-wrapper").toggleClass("active");
+      });
+  </script>
+  <script>
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+              || location.hostname == this.hostname) {
+
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+    </script>
+
+  </body>
+
+</html>

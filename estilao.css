@@ -1,0 +1,174 @@
+body{
+
+ background: url(img/bg.jpg)  center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+.superbox{
+background-color: #fff;
+box-shadow: 0 0 5px rgba(0,0,0,0.2);
+padding: 20px;
+border-radius: 10px;
+}
+
+.minibox{
+
+background-color: #fff;
+box-shadow: 0 0 5px rgba(0,0,0,0.2);
+padding: 5px;
+border-radius: 10px;
+
+}
+.services {
+
+	margin-top: 30px;
+}
+
+.space{
+	margin-top:30px;
+}
+.imgside{
+	 
+  
+z-index: 2;
+background-color: #e3e3e3;
+border: solid 2px #fff;
+box-shadow: 0 0 5px rgba(44,42,41,0.9);
+border-radius: 9px;
+opacity: 0;
+}
+
+.imgside img{ 
+border-radius: 9px;
+max-width: 100%;
+height: auto;
+}
+
+body {
+font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 1.428571429;
+color: #333; 
+z-index: 3;
+}
+
+#listado td:hover{
+	color: ;
+	cursor: pointer;
+ 
+}
+#listado td{
+
+	list-style: none;
+}
+
+
+ .services{  
+min-height: 700px;
+
+ }
+
+.services hr{
+
+	
+border-top: 1px solid   #dbf3f8;
+}
+
+ 
+
+.selectpasta{
+
+	margin-left: 30px;
+	margin-bottom: 15px;
+}
+.selectpasta select{
+
+	 min-width: 100px;
+}
+
+.btn-cinza{
+	color: #ffffff;
+ 	background-color: #646b66;
+ 	border-color:#545a55 ;
+}
+
+.icondownload{
+width: 44px;
+height: 44px;
+position: absolute;  
+top: 25px;
+right: 25px;  
+font-size: 24px;
+border: 3px solid #ffffff;
+border-radius: 50%;
+line-height: 39px;
+vertical-align: middle;
+text-align: center;
+background-color: rgba(49,189,54, 0.6)
+}
+.icondownload:hover{
+font-weight: bold; 
+line-height: 37px;
+ 
+font-size: 25px;
+cursor:pointer;
+-webkit-transition: font-size, color 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+-moz-transition: font-size, color 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+-o-transition: font-size, color 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+transition: font-size, color 0.2s ease-in-out, width 0, height 0, top 0, left 0; 
+}
+
+
+.icondownload a:link {text-decoration: none; color: #fff;}
+ 
+.icondownload a {text-decoration: none; color: #fff;}
+ 
+.icondownload a:hover {text-decoration: none; color: #fff;}
+ 
+ 
+ table{
+  text-align: justify;
+ 	background-color: #f2f2f2;
+ 	color: #000;
+ 	 
+  
+ }
+
+ table tbody tr:hover{
+ 
+  background-color: #e9e9e9;
+ }
+
+ 
+.visualizamodal{
+
+  position: absolute;
+  margin-top: 20px;
+
+
+
+}
+
+form select{
+	color: #000;
+}
+h1{
+color: #000;
+font-size: 40px;
+font-weight: 500;
+}
+h2{
+	color: #000;
+}
+
+td .btn{
+
+ padding: 0px 1px;
+ width: 50px;
+
+}
+

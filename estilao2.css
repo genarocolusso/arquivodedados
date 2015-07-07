@@ -1,0 +1,20 @@
+
+.services h1{
+
+	color: #fff;text-shadow: 1px 2px 0 #2b90b4,3px 4px 0 rgba(0,0,0,0.15);
+}
+
+td select option{
+
+ color: #000;
+
+}
+td select{
+
+	color: #000;
+}
+
+td input{
+
+	color: #000;
+}
