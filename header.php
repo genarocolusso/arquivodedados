@@ -17,7 +17,7 @@
               <a href=" index.php">Arquivo de dados</a>
             </li>
             <li>
-              <a href="http://estudioead.ctism.ufsm.br/">EaD CTISM </a>
+            
             </li>
            
              
